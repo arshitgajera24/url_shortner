@@ -109,8 +109,3 @@ const server = createServer(async (req,res) => {
 server.listen(PORT, () => {
     console.log(`Server Running at http://localhost:${PORT}`);
 })
-
-
-//git add .
-//git commit -m "initial commit"
-//git push -u origin main
