@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- ZMDI Material Design Iconic Font CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/material-design-iconic-font@2.2.0/dist/css/material-design-iconic-font.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Contact Page</title>
+  </head>
+
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <div class="main">
+      <section class="section-contact">
+        <div class="container">
+          <div class="shortener-content">
+            <!-- user login status -->
+            <div class="user-status">
+              <% if(user) { %>
+              <div class="status-badge success">
+                <i class="zmdi zmdi-check-circle"></i>
+                <span>You are logged in</span>
+              </div>
+              <% } else { %>
+              <div class="status-badge warning">
+                <i class="zmdi zmdi-alert-circle"></i>
+                <span>You are not logged in</span>
+              </div>
+              <% } %>
+            </div>
+
+            <div class="shortener-form">
+              <h1 class="form-title">Contact Us</h1>
+
+              <form
+                action="https://formspree.io/f/xovldepr"
+                method="post"
+                class="url-form"
+                id="url-form"
+              >
+
+                <div class="form-group">
+                    <label for="name">
+                        <i class="zmdi zmdi-account material-icons-name"></i>
+                    </label>
+                    <input
+                      type="text"
+                      name="username"
+                      id="username"
+                      required
+                      autocomplete="off"
+                      placeholder="Enter Full Name"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        <i class="zmdi zmdi-email"></i>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      required
+                      autocomplete="off"
+                      placeholder="abc@gmail.com"
+                    />
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">
+                    <i class="fa-solid fa-book"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    required
+                    autocomplete="off"
+                    placeholder="Title of your message"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">
+                    <i class="fa-solid fa-message"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="message"
+                    id="message"
+                    placeholder="We are always here to help you."
+                  >
+                </div>
+
+
+                <div class="form-group form-button">
+                  <input
+                    type="submit"
+                    name="send"
+                    id="send"
+                    class="form-submit"
+                    value="Send Message"
+                  />
+                </div>
+              </form>
+            </div>
+            
+
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238132.67288063216!2d72.6574666387045!3d21.159440571568595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1758025003393!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+
+  </body>
+</html>

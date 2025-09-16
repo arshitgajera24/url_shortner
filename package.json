@@ -4,14 +4,45 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "node --watch app.js",
-    "start": "node app.js"
+    "dev": "node --env-file=.env --watch app.js",
+    "start": "node --env-file=.env app.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "node --env-file=.env drizzle/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "express": "^5.1.0"
+    "@prisma/client": "^6.14.0",
+    "arctic": "^3.7.0",
+    "argon2": "^0.44.0",
+    "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "crypto": "^1.0.1",
+    "drizzle-orm": "^0.44.4",
+    "drizzle-seed": "^0.3.1",
+    "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mjml": "^4.15.3",
+    "mongoose": "^8.17.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.14.3",
+    "netlify-lambda": "^2.0.16",
+    "nodemailer": "^7.0.5",
+    "request-ip": "^3.3.0",
+    "resend": "^6.0.2",
+    "serverless-http": "^4.0.0",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4",
+    "prisma": "^6.14.0"
   }
 }

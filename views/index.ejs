@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>URL Shortner</title>
+</head>
+<body>
+    <%- include('./partials/header') %>
+
+    <div class="main-section">
+    <div class="container">
+        
+        <% if(user) { %>
+            <div class="status success"><i class="fa-solid fa-circle-check"></i> You Are Logged In</div>
+        <% } else { %>
+            <div class="status warning"><i class="fa-solid fa-triangle-exclamation"></i> You are Not Logged In</div>
+        <% } %>
+
+        <form action="/" method="post">
+            <div class="input-group">
+                <i class="fa-solid fa-link"></i>
+                <input type="text" name="url" id="url" placeholder="Enter URL">
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-code"></i>
+                <input type="text" name="shortcode" id="shortcode" placeholder="Enter custom short code (optional)">
+            </div>
+            
+            <% if(errors && errors.length > 0) { %>
+            <% errors.forEach((error) => { %>
+                <p class="flash-error"><%= error %></p>
+            <% }); %>
+            <% } %>
+            
+            <button type="submit"> Shorten </button>
+        </form>
+
+        <h2> Shortened URLs </h2>
+        <% if(links && links.length > 0) { %>
+        <ul>
+            <% links.map(({short_code, url, id}) => { %>
+            <% const truncatedURL = url.length >= 30 ? `${url.slice(0, 00)}...` : url %>
+            <li>
+                <div class="link-left">
+                    <i class="fa-solid fa-link"></i>
+                    <div style="display: flex; flex-direction: column;">
+                    <a href="/<%= short_code %>" target="_blank"><%= host %>/<%= short_code %></a>
+                    <span><%= truncatedURL %></span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button class="copy-btn">
+                        <a href="/edit/<%= id %>">
+                            <i class="fa-regular fa-edit"></i>
+                        </a>
+                    </button>
+                    <form action="/delete/<%= id %>" method="post">
+                        <button class="copy-btn">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </form>
+                </div>
+            </li>
+            <% }).join("") %>
+        </ul>
+        <% } else { %>
+            <p class="empty-list"> No Shortened URLs yet. Create Your First one above! </p>
+        <% } %>
+    </div>
+    </div>
+
+    <% if (totalPages > 1) { %>
+    <div class="pagination">
+
+        <% if (currentPage > 1) { %>
+            <a href="?page=<%= currentPage - 1 %>" class="page-link">&laquo; Previous</a>
+        <% } else { %>
+            <span class="page-link disabled">&laquo; Previous</span>
+        <% } %>
+
+
+        <%
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+
+            while (endPage - startPage < 4 && startPage > 1) {
+                startPage--;
+            }
+            while (endPage - startPage < 4 && endPage < totalPages) {
+                endPage++;
+            }
+        %>
+
+
+        <% if (startPage > 1) { %>
+            <a href="?page=1" class="page-link">1</a>
+            <% if (startPage > 2) { %>
+                <span class="ellipsis">...</span>
+            <% } %>
+        <% } %>
+        
+
+        <% for (let i = startPage; i <= endPage; i++) { %>
+            <% if (i === currentPage) { %>
+                <span class="page-link current"><%= i %></span>
+            <% } else { %>
+                <a href="?page=<%= i %>" class="page-link"><%= i %></a>
+            <% } %>
+        <% } %>
+
+
+        <% if (endPage < totalPages) { %>
+            <% if (endPage < totalPages - 1) { %>
+                <span class="ellipsis">...</span>
+            <% } %>
+            <a href="?page=<%= totalPages %>" class="page-link"><%= totalPages %></a>
+         <% } %>
+
+
+        <% if (currentPage < totalPages) { %>
+            <a href="?page=<%= currentPage + 1 %>" class="page-link">Next &raquo;</a>
+        <% } else { %>
+            <span class="page-link disabled">Next &raquo;</span>
+        <% } %>
+    </div>
+    <% } %>
+
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

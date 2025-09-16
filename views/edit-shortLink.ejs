@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>URL Shortner</title>
+</head>
+<body>
+    <%- include('./partials/header') %>
+
+    <div class="main-section">
+    <div class="container">
+        
+        <% if(user) { %>
+            <div class="status success"><i class="fa-solid fa-circle-check"></i> You Are Logged In</div>
+        <% } else { %>
+            <div class="status warning"><i class="fa-solid fa-triangle-exclamation"></i> You are Not Logged In</div>
+        <% } %>
+
+        <form action="/edit/<%= id %>" method="post">
+            <div class="input-group">
+                <i class="fa-solid fa-link"></i>
+                <input type="text" name="url" id="url" value="<%= url %>" />
+            </div>
+            <div class="input-group">
+                <i class="fa-solid fa-code"></i>
+                <input type="text" name="shortcode" id="shortcode" value="<%= shortcode %>" />
+            </div>
+            
+            <% if(errors && errors.length > 0) { %>
+            <% errors.forEach((error) => { %>
+                <p class="flash-error"><%= error %></p>
+            <% }); %>
+            <% } %>
+            
+            <button type="submit"> Update </button>
+        </form>
+
+    </div>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>

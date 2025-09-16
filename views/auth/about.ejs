@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- ZMDI Material Design Iconic Font CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/material-design-iconic-font@2.2.0/dist/css/material-design-iconic-font.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>About Us - URL Shortener</title>
+  </head>
+
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <div class="main">
+      <section class="section-about">
+        <div class="container">
+          <div class="shortener-content">
+            <!-- user login status -->
+            <div class="user-status">
+              <% if(user) { %>
+              <div class="status-badge success">
+                <i class="zmdi zmdi-check-circle"></i>
+                <span>You are logged in</span>
+              </div>
+              <% } else { %>
+              <div class="status-badge warning">
+                <i class="zmdi zmdi-alert-circle"></i>
+                <span>You are not logged in</span>
+              </div>
+              <% } %>
+            </div>
+
+            <div class="shortener-form">
+              <h1 class="form-title">About Our URL Shortener</h1>
+
+              <div class="about-content">
+                <p>
+                  Welcome to our <strong>URL Shortener</strong> project! 🚀  
+                  This platform allows you to convert long, messy URLs into short and easy-to-share links in seconds.
+                </p>
+
+                <h2>✨ Key Features</h2>
+                <ul>
+                  <li><i class="fa-solid fa-link"></i> Shorten long URLs instantly</li>
+                  <li><i class="fa-solid fa-lock"></i> Secure and reliable link generation</li>
+                  <li><i class="fa-solid fa-chart-line"></i> Track and manage your shortened links</li>
+                  <li><i class="fa-solid fa-user"></i> User-friendly interface</li>
+                </ul>
+
+                <h2>🎯 Why We Built This</h2>
+                <p>
+                  Sharing long URLs can be inconvenient and unattractive. Our goal was to build a 
+                  simple yet powerful tool that helps individuals and businesses create professional 
+                  links, improve readability, and make sharing content effortless.
+                </p>
+
+                <h2>👨‍💻 Tech Stack</h2>
+                <p>
+                  This project is developed using <strong>Node.js, Express, MySQL</strong>, and 
+                  <strong>EJS</strong> templates. For styling, we use modern CSS and responsive 
+                  layouts to ensure a clean and smooth user experience.
+                </p>
+
+                <h2>📬 Get in Touch</h2>
+                <p>
+                  Have questions or feedback? Visit our <a href="/contact">Contact Page</a> and drop us a message.  
+                  We’d love to hear from you!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

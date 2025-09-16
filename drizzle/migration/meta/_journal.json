@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1756546926638,
+      "tag": "0000_wonderful_blur",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1757672928208,
+      "tag": "0001_chunky_mister_sinister",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1757745451905,
+      "tag": "0002_lovely_nocturne",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1757745678425,
+      "tag": "0003_parched_speedball",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1757765364437,
+      "tag": "0004_swift_skullbuster",
+      "breakpoints": true
+    }
+  ]
+}
